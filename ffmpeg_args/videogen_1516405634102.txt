@@ -1,0 +1,8 @@
+file '../mp4lol/denis.mp4'
+file '../mp4lol/mario.mp4'
+file '../mp4lol/pikachu.mp4'
+file '../mp4lol/smtv.mp4'
+file '../mp4lol/musclor.mp4'
+file '../mp4lol/seels.mp4'
+file '../mp4lol/skyrim.mp4'
+file '../mp4lol/computer.mp4'

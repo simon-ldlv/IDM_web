@@ -1,14 +1,16 @@
 VideoGen {
 	
-	mandatory videoseq v1 "mp4lol/denny.mp4"
-	mandatory videoseq v2 "mp4lol/aalien.mp4"
-	mandatory videoseq v3 "mp4lol/chums.mp4"
-	mandatory videoseq v4 "mp4lol/doot.mp4"
+	mandatory videoseq v1 "mp4lol/denis.mp4"
+	mandatory videoseq v3 "mp4lol/mario.mp4"
 	mandatory videoseq v5 "mp4lol/pikachu.mp4"
-	mandatory videoseq v5 "mp4lol/interski.mp4"
+	mandatory videoseq v5 "mp4lol/smtv.mp4"
 	mandatory videoseq v6 "mp4lol/musclor.mp4"
+	mandatory videoseq v6 "mp4lol/hacker.mp4"
 	mandatory videoseq v7 "mp4lol/seels.mp4"
-	mandatory videoseq v8 "mp4lol/blblblblbl.mp4"
-	mandatory videoseq v9 "mp4lol/obama.mp4"
+	mandatory videoseq v8 "mp4lol/skyrim.mp4"
+	mandatory videoseq v10 "mp4lol/effect.mp4"
+	mandatory videoseq v9 "mp4lol/computer.mp4"
+	mandatory videoseq v10 "mp4lol/russian.mp4"
+	mandatory videoseq v10 "mp4lol/yoda.mp4"
 
 }
