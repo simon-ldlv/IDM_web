@@ -3,6 +3,7 @@ package istic.idm.web.rest;
 import com.codahale.metrics.annotation.Timed;
 
 import istic.VideoGenStation;
+import istic.idm.domain.TypeGen;
 import istic.idm.domain.Video;
 
 import istic.idm.repository.VideoRepository;
@@ -26,6 +27,7 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class VideoResource {
 	
+	
 	VideoGenStation station;
 
     private final Logger log = LoggerFactory.getLogger(VideoResource.class);
@@ -36,14 +38,16 @@ public class VideoResource {
 
     public VideoResource(VideoRepository videoRepository) {
         this.videoRepository = videoRepository;
-        station = new VideoGenStation(
-        		"./mp4lol",
-        		"./target/www",
-        		"./output/vignette",
-        		"./output/gif",
-        		"./output/palette",
-        		"./ffmpeg_args");
-    }
+        
+        station = new VideoGenStation( 
+                "./mp4lol", 
+                "./target/www", 
+                "./output/vignette", 
+                "./output/gif", 
+                "./output/palette", 
+                "./ffmpeg_args"); 
+        } 
+    
 
     /**
      * POST  /videos : Create a new video.
@@ -56,10 +60,30 @@ public class VideoResource {
     @Timed
     public ResponseEntity<Video> createVideo(@RequestBody Video video) throws URISyntaxException {
         log.debug("REST request to save Video : {}", video);
+        
+    	String url = "test";
+        
         if (video.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new video cannot already have an ID")).body(null);
         }
+        
+    	if (video.getTypeGen().equals(TypeGen.Longest)) {
+        	url = station.genererLongestVideo(video.getModele().getPath());
+    	} else if (video.getTypeGen().equals(TypeGen.Random)) {
+
+        	url = station.genererVideoRandom(video.getModele().getPath());
+    	} else {
+        	return ResponseUtil.wrapOrNotFound(Optional.ofNullable(null));
+    	}
+    	
+    	String[] monSplit = url.split("/");
+    	String monUrl = monSplit[monSplit.length-1];
+    	String localUrl = monUrl;
+    	
+    	video.setUrl(localUrl);
+    	
         Video result = videoRepository.save(video);
+
         return ResponseEntity.created(new URI("/api/videos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -81,6 +105,7 @@ public class VideoResource {
         if (video.getId() == null) {
             return createVideo(video);
         }
+        
         Video result = videoRepository.save(video);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, video.getId().toString()))
@@ -126,25 +151,4 @@ public class VideoResource {
         videoRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
-    
-    @GetMapping("/videogen")
-public ResponseEntity<Video> getVideogen() {
-    	
-    	String url = "test";
-    	url = station.genererLongestVideo("./model/example2.videogen");
-    	String[] monSplit = url.split("/");
-    	String monUrl = monSplit[monSplit.length-1];
-    	String localUrl = "http://localhost:8080/"+monUrl;
-    	
-    	
-    	Video newVideo = new Video();
-    	newVideo.setName("Example2");
-    	newVideo.setUrl(localUrl);
-    	
-        Video result = videoRepository.save(newVideo);
-    	
-    	return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
-    }
-    
-    
 }

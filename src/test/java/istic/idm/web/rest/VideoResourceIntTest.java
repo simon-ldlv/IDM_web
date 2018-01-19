@@ -28,6 +28,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import istic.idm.domain.enumeration.TypeGen;
 /**
  * Test class for the VideoResource REST controller.
  *
@@ -42,6 +43,9 @@ public class VideoResourceIntTest {
 
     private static final String DEFAULT_URL = "AAAAAAAAAA";
     private static final String UPDATED_URL = "BBBBBBBBBB";
+
+    private static final TypeGen DEFAULT_TYPE_GEN = TypeGen.Longest;
+    private static final TypeGen UPDATED_TYPE_GEN = TypeGen.Random;
 
     @Autowired
     private VideoRepository videoRepository;
@@ -81,7 +85,8 @@ public class VideoResourceIntTest {
     public static Video createEntity(EntityManager em) {
         Video video = new Video()
             .name(DEFAULT_NAME)
-            .url(DEFAULT_URL);
+            .url(DEFAULT_URL)
+            .typeGen(DEFAULT_TYPE_GEN);
         return video;
     }
 
@@ -107,6 +112,7 @@ public class VideoResourceIntTest {
         Video testVideo = videoList.get(videoList.size() - 1);
         assertThat(testVideo.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testVideo.getUrl()).isEqualTo(DEFAULT_URL);
+        assertThat(testVideo.getTypeGen()).isEqualTo(DEFAULT_TYPE_GEN);
     }
 
     @Test
@@ -140,7 +146,8 @@ public class VideoResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(video.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].url").value(hasItem(DEFAULT_URL.toString())));
+            .andExpect(jsonPath("$.[*].url").value(hasItem(DEFAULT_URL.toString())))
+            .andExpect(jsonPath("$.[*].typeGen").value(hasItem(DEFAULT_TYPE_GEN.toString())));
     }
 
     @Test
@@ -155,7 +162,8 @@ public class VideoResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(video.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.url").value(DEFAULT_URL.toString()));
+            .andExpect(jsonPath("$.url").value(DEFAULT_URL.toString()))
+            .andExpect(jsonPath("$.typeGen").value(DEFAULT_TYPE_GEN.toString()));
     }
 
     @Test
@@ -177,7 +185,8 @@ public class VideoResourceIntTest {
         Video updatedVideo = videoRepository.findOne(video.getId());
         updatedVideo
             .name(UPDATED_NAME)
-            .url(UPDATED_URL);
+            .url(UPDATED_URL)
+            .typeGen(UPDATED_TYPE_GEN);
 
         restVideoMockMvc.perform(put("/api/videos")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -190,6 +199,7 @@ public class VideoResourceIntTest {
         Video testVideo = videoList.get(videoList.size() - 1);
         assertThat(testVideo.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testVideo.getUrl()).isEqualTo(UPDATED_URL);
+        assertThat(testVideo.getTypeGen()).isEqualTo(UPDATED_TYPE_GEN);
     }
 
     @Test

@@ -1,0 +1,22 @@
+{
+    "memeGeneratorApp": {
+        "modele" : {
+            "home": {
+                "title": "Modeles",
+                "createLabel": "Créer un nouveau Modele",
+                "createOrEditLabel": "Créer ou éditer un Modele"
+            },
+            "created": "Un nouveau Modele a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Modele avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Modele avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Modele {{ id }} ?"
+            },
+            "detail": {
+                "title": "Modele"
+            },
+            "name": "Name",
+            "path": "Path"
+        }
+    }
+}

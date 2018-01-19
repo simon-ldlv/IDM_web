@@ -15,10 +15,10 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity Video.
+        Added the entity Modele.
     -->
-    <changeSet id="20180118234054-1" author="jhipster">
-        <createTable tableName="video">
+    <changeSet id="20180119183251-1" author="jhipster">
+        <createTable tableName="modele">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -26,15 +26,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="url" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="type_gen" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="modele_id" type="bigint">
+            <column name="path" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 

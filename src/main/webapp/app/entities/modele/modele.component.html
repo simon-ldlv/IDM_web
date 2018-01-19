@@ -1,10 +1,10 @@
 <div>
     <h2>
-        <span jhiTranslate="memeGeneratorApp.video.home.title">Videos</span>
-        <button class="btn btn-primary float-right jh-create-entity create-video" [routerLink]="['/', { outlets: { popup: ['video-new'] } }]">
+        <span jhiTranslate="memeGeneratorApp.modele.home.title">Modeles</span>
+        <button class="btn btn-primary float-right jh-create-entity create-modele" [routerLink]="['/', { outlets: { popup: ['modele-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span  jhiTranslate="memeGeneratorApp.video.home.createLabel">
-            Create new Video
+            <span  jhiTranslate="memeGeneratorApp.modele.home.createLabel">
+            Create new Modele
             </span>
         </button>
     </h2>
@@ -12,38 +12,38 @@
     <div class="row">
     </div>
     <br/>
-    <div class="table-responsive" *ngIf="videos">
+    <div class="table-responsive" *ngIf="modeles">
         <table class="table table-striped">
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="memeGeneratorApp.video.name">Name</span></th>
-            <th><span jhiTranslate="memeGeneratorApp.video.url">Url</span></th>
+            <th><span jhiTranslate="memeGeneratorApp.modele.name">Name</span></th>
+            <th><span jhiTranslate="memeGeneratorApp.modele.path">Path</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let video of videos ;trackBy: trackId">
-                <td><a [routerLink]="['../video', video.id ]">{{video.id}}</a></td>
-                <td>{{video.name}}</td>
-                <td><a href="{{video.url}}">{{video.url}}</a></td>
+            <tr *ngFor="let modele of modeles ;trackBy: trackId">
+                <td><a [routerLink]="['../modele', modele.id ]">{{modele.id}}</a></td>
+                <td>{{modele.name}}</td>
+                <td>{{modele.path}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['../video', video.id ]"
+                                [routerLink]="['../modele', modele.id ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'video/'+ video.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'modele/'+ modele.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'video/'+ video.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'modele/'+ modele.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>

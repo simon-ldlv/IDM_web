@@ -8,9 +8,24 @@
         <dd>
             <span>{{video.name}}</span>
         </dd>
-        <dt><span jhiTranslate="memeGeneratorApp.video.url">Url</span></dt>
+        <dt><span>Generated video : </span></dt>
         <dd>
-            <span>{{video.url}}</span>
+            <span>
+                <video width="640" height="480" controls>
+                    <source src="{{video.url}}" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video>
+            </span>
+        </dd>
+        <dt><span jhiTranslate="memeGeneratorApp.video.typeGen">Type Gen</span></dt>
+        <dd>
+            <span jhiTranslate="{{'memeGeneratorApp.TypeGen.' + video.typeGen}}">{{video.typeGen}}</span>
+        </dd>
+        <dt><span jhiTranslate="memeGeneratorApp.video.modele">Modele</span></dt>
+        <dd>
+            <div *ngIf="video.modele">
+                <a [routerLink]="['/modele', video.modele?.id]">{{video.modele?.name}}</a>
+            </div>
         </dd>
     </dl>
 

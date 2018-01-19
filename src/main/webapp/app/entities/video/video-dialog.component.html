@@ -17,12 +17,21 @@
             <input type="text" class="form-control" name="name" id="field_name"
                 [(ngModel)]="video.name"  />
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="memeGeneratorApp.video.url" for="field_url">Url</label>
-            <input type="text" class="form-control" name="url" id="field_url"
-                [(ngModel)]="video.url"  />
+       <div class="form-group">
+            <label class="form-control-label" jhiTranslate="memeGeneratorApp.video.typeGen" for="field_typeGen">Type Gen</label>
+            <select class="form-control" name="typeGen" [(ngModel)]="video.typeGen" id="field_typeGen" >
+                <option value="Longest">{{'memeGeneratorApp.TypeGen.Longest' | translate}}</option>
+                <option value="Random">{{'memeGeneratorApp.TypeGen.Random' | translate}}</option>
+            </select>
         </div>
 
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="memeGeneratorApp.video.modele" for="field_modele">Modele</label>
+            <select class="form-control" id="field_modele" name="modele" [(ngModel)]="video.modele" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="modeleOption.id === video.modele?.id ? video.modele : modeleOption" *ngFor="let modeleOption of modeles; trackBy: trackModeleById">{{modeleOption.name}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

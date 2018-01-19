@@ -6,27 +6,22 @@ import { Observable } from 'rxjs/Rx';
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
-import { Video } from './video.model';
-import { VideoPopupService } from './video-popup.service';
-import { VideoService } from './video.service';
-import { Modele, ModeleService } from '../modele';
-import { ResponseWrapper } from '../../shared';
+import { Modele } from './modele.model';
+import { ModelePopupService } from './modele-popup.service';
+import { ModeleService } from './modele.service';
 
 @Component({
-    selector: 'jhi-video-dialog',
-    templateUrl: './video-dialog.component.html'
+    selector: 'jhi-modele-dialog',
+    templateUrl: './modele-dialog.component.html'
 })
-export class VideoDialogComponent implements OnInit {
+export class ModeleDialogComponent implements OnInit {
 
-    video: Video;
+    modele: Modele;
     isSaving: boolean;
-
-    modeles: Modele[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
-        private videoService: VideoService,
         private modeleService: ModeleService,
         private eventManager: JhiEventManager
     ) {
@@ -34,8 +29,6 @@ export class VideoDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.modeleService.query()
-            .subscribe((res: ResponseWrapper) => { this.modeles = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -44,22 +37,22 @@ export class VideoDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        if (this.video.id !== undefined) {
+        if (this.modele.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.videoService.update(this.video));
+                this.modeleService.update(this.modele));
         } else {
             this.subscribeToSaveResponse(
-                this.videoService.create(this.video));
+                this.modeleService.create(this.modele));
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<Video>) {
-        result.subscribe((res: Video) =>
+    private subscribeToSaveResponse(result: Observable<Modele>) {
+        result.subscribe((res: Modele) =>
             this.onSaveSuccess(res), (res: Response) => this.onSaveError());
     }
 
-    private onSaveSuccess(result: Video) {
-        this.eventManager.broadcast({ name: 'videoListModification', content: 'OK'});
+    private onSaveSuccess(result: Modele) {
+        this.eventManager.broadcast({ name: 'modeleListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
@@ -71,33 +64,29 @@ export class VideoDialogComponent implements OnInit {
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
     }
-
-    trackModeleById(index: number, item: Modele) {
-        return item.id;
-    }
 }
 
 @Component({
-    selector: 'jhi-video-popup',
+    selector: 'jhi-modele-popup',
     template: ''
 })
-export class VideoPopupComponent implements OnInit, OnDestroy {
+export class ModelePopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
     constructor(
         private route: ActivatedRoute,
-        private videoPopupService: VideoPopupService
+        private modelePopupService: ModelePopupService
     ) {}
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
-                this.videoPopupService
-                    .open(VideoDialogComponent as Component, params['id']);
+                this.modelePopupService
+                    .open(ModeleDialogComponent as Component, params['id']);
             } else {
-                this.videoPopupService
-                    .open(VideoDialogComponent as Component);
+                this.modelePopupService
+                    .open(ModeleDialogComponent as Component);
             }
         });
     }

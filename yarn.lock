@@ -289,11 +289,31 @@ amdefine@>=0.0.4, amdefine@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+angular-animate@~1.4.0:
+  version "1.4.14"
+  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.4.14.tgz#ee4068cafdb7e230026319ec6cb9207aca898038"
+
+angular-route@~1.4.0:
+  version "1.4.14"
+  resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.4.14.tgz#2e5dbfe1239423c678165c39bb38601ad66a0794"
+
+angular-sanitize@~1.4.0:
+  version "1.4.14"
+  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.4.14.tgz#778c4e24941fa982d86cf7ebac3e613fa5d414fc"
+
 angular2-template-loader@0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/angular2-template-loader/-/angular2-template-loader-0.6.2.tgz#c0d44e90fff0fac95e8b23f043acda7fd1c51d7c"
   dependencies:
     loader-utils "^0.2.15"
+
+angular@~1.4.0:
+  version "1.4.14"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.4.14.tgz#9d0feaf60ce6e52ce50f49ee328656d1e1875c37"
+
+angulartics@~0.17.1:
+  version "0.17.2"
+  resolved "https://registry.yarnpkg.com/angulartics/-/angulartics-0.17.2.tgz#ef7e7ba6f30013e1d50da3232bd630388bb5feb3"
 
 ansi-escapes@^1.1.0:
   version "1.4.0"
@@ -782,6 +802,10 @@ boom@5.x.x:
 bootstrap@4.0.0-beta:
   version "4.0.0-beta"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.0.0-beta.tgz#dc5928175d2e71310bc668cf9e05a907211b72a6"
+
+bootstrap@~3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.1.1.tgz#17e14ed261c0fcd9b52ea9aa6420f6d51cd5fa77"
 
 brace-expansion@^1.1.7:
   version "1.1.8"
@@ -2433,6 +2457,10 @@ es5-ext@^0.10.14, es5-ext@^0.10.35, es5-ext@^0.10.9, es5-ext@~0.10.14:
   dependencies:
     es6-iterator "~2.0.3"
     es6-symbol "~3.1.1"
+
+es5-shim@~2.0.8:
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/es5-shim/-/es5-shim-2.0.12.tgz#0818a1556db049cfba82b3242b4661e049e7ea88"
 
 es6-iterator@^2.0.1, es6-iterator@~2.0.1, es6-iterator@~2.0.3:
   version "2.0.3"
@@ -4443,6 +4471,10 @@ json-stringify-safe@~5.0.1:
 json3@3.3.2, json3@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/json3/-/json3-3.3.2.tgz#3c0434743df93e2f5c42aee7b19bcb483575f4e1"
+
+json3@~3.2.4:
+  version "3.2.6"
+  resolved "https://registry.yarnpkg.com/json3/-/json3-3.2.6.tgz#f6efc93c06a04de9aec53053df2559bb19e2038b"
 
 json5@^0.5.0, json5@^0.5.1:
   version "0.5.1"
@@ -8444,6 +8476,19 @@ verror@1.10.0:
     assert-plus "^1.0.0"
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
+
+videogular@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/videogular/-/videogular-2.2.1.tgz#5ab801de9b9fbb772fa327b20f7068012d0ea083"
+  dependencies:
+    angular "~1.4.0"
+    angular-animate "~1.4.0"
+    angular-route "~1.4.0"
+    angular-sanitize "~1.4.0"
+    angulartics "~0.17.1"
+    bootstrap "~3.1.1"
+    es5-shim "~2.0.8"
+    json3 "~3.2.4"
 
 vinyl-file@^2.0.0:
   version "2.0.0"

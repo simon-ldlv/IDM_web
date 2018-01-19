@@ -42,6 +42,7 @@ public class CacheConfiguration {
             cm.createCache(istic.idm.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(istic.idm.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(istic.idm.domain.Video.class.getName(), jcacheConfiguration);
+            cm.createCache(istic.idm.domain.Modele.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

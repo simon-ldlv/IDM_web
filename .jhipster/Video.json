@@ -1,6 +1,13 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "modele",
+            "otherEntityName": "modele",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
     "fields": [
         {
             "fieldName": "name",
@@ -9,6 +16,11 @@
         {
             "fieldName": "url",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "typeGen",
+            "fieldType": "TypeGen",
+            "fieldValues": "Longest,Random"
         }
     ],
     "changelogDate": "20180118234054",

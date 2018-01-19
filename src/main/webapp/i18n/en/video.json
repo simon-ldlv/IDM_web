@@ -16,7 +16,9 @@
                 "title": "Video"
             },
             "name": "Name",
-            "url": "Url"
+            "url": "Url",
+            "typeGen": "Type Gen",
+            "modele": "Modele"
         }
     }
 }

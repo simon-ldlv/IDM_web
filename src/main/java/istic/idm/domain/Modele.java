@@ -7,18 +7,16 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-
 /**
- * A Video.
+ * A Modele.
  */
 @Entity
-@Table(name = "video")
+@Table(name = "modele")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Video implements Serializable {
+public class Modele implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,15 +24,8 @@ public class Video implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "url")
-    private String url;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type_gen")
-    private TypeGen typeGen;
-
-    @ManyToOne
-    private Modele modele;
+    @Column(name = "path")
+    private String path;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -49,7 +40,7 @@ public class Video implements Serializable {
         return name;
     }
 
-    public Video name(String name) {
+    public Modele name(String name) {
         this.name = name;
         return this;
     }
@@ -58,43 +49,17 @@ public class Video implements Serializable {
         this.name = name;
     }
 
-    public String getUrl() {
-        return url;
+    public String getPath() {
+        return path;
     }
 
-    public Video url(String url) {
-        this.url = url;
+    public Modele path(String path) {
+        this.path = path;
         return this;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public TypeGen getTypeGen() {
-        return typeGen;
-    }
-
-    public Video typeGen(TypeGen typeGen) {
-        this.typeGen = typeGen;
-        return this;
-    }
-
-    public void setTypeGen(TypeGen typeGen) {
-        this.typeGen = typeGen;
-    }
-
-    public Modele getModele() {
-        return modele;
-    }
-
-    public Video modele(Modele modele) {
-        this.modele = modele;
-        return this;
-    }
-
-    public void setModele(Modele modele) {
-        this.modele = modele;
+    public void setPath(String path) {
+        this.path = path;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -106,11 +71,11 @@ public class Video implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Video video = (Video) o;
-        if (video.getId() == null || getId() == null) {
+        Modele modele = (Modele) o;
+        if (modele.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), video.getId());
+        return Objects.equals(getId(), modele.getId());
     }
 
     @Override
@@ -120,11 +85,10 @@ public class Video implements Serializable {
 
     @Override
     public String toString() {
-        return "Video{" +
+        return "Modele{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", url='" + getUrl() + "'" +
-            ", typeGen='" + getTypeGen() + "'" +
+            ", path='" + getPath() + "'" +
             "}";
     }
 }
