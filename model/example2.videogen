@@ -1,0 +1,10 @@
+VideoGen {
+	
+	optional videoseq v1 "mp4lol/seels.mp4"
+	optional videoseq v2 "mp4lol/effect.mp4"
+	mandatory videoseq v3 "mp4lol/skyrim.mp4"
+	optional videoseq v4 "mp4lol/beep.mp4"
+	optional videoseq v5 "mp4lol/yoda.mp4"
+	mandatory videoseq v6 "mp4lol/smtv.mp4"
+
+}
