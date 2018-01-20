@@ -8,3 +8,6 @@ We have developed a web application using our VideoGen library.
 Our data model is composed of:
 - Video Entity: Contains a name, a URL, and the associated template
 - Model entity: contains a name and path to the model
+
+
+Demonstration video is present at the root of the repository: Screencast - démo projet IDM.mp4
